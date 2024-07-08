@@ -20,9 +20,9 @@ while True:
             keypointsC = detection.location_data.relative_keypoints
             h, w, c = img.shape
             for i in range(2):
-                keypoints = int(keypointsC[i].x * w), int(keypointsC[i].y * h)
-                cv2.circle(img, keypoints, 10, (255, 0, 255), 2)
-            print(id, detection)
+                eyes = int(keypointsC[i].x * w), int(keypointsC[i].y * h)
+                cv2.circle(img, eyes, 10, (255, 0, 255), 2)
+                cv2.putText(img, f'{int(detection.score[0]*100)}%', (eyes[0], eyes[1] - 20), cv2.FONT_HERSHEY_PLAIN, 2, (255, 0, 255), 2)
 
     cTime = time.time()
     fps = 1 / (cTime - pTime)
