@@ -26,8 +26,8 @@ while True:
             h, w, c = img.shape
             for i in range(2):
                 eyes = int(keypointsC[i].x * w), int(keypointsC[i].y * h)
-                cv2.circle(img, eyes, 10, (255, 0, 255), 2)
-                cv2.putText(img, f'{int(detection.score[0]*100)}%', (eyes[0], eyes[1] - 20), cv2.FONT_HERSHEY_PLAIN, 2, (255, 0, 255), 2)
+                cv2.circle(img, eyes, 10, (255, 0, 255), 3)
+                cv2.putText(img, f'{int(detection.score[0]*100)}%', (eyes[0], eyes[1] - 20), cv2.FONT_HERSHEY_PLAIN, 2, (255, 0, 255), 3)
                 if detection.score[0] > 0.8:
                     eyes_detected = True
 
@@ -45,7 +45,7 @@ while True:
     cTime = time.time()
     fps = 1 / (cTime - pTime)
     pTime = cTime
-    cv2.putText(img, f'FPS: {int(fps)}', (20, 70), cv2.FONT_HERSHEY_PLAIN, 3, (0, 255, 0), 2)
+    cv2.putText(img, f'FPS: {int(fps)}', (20, 70), cv2.FONT_HERSHEY_PLAIN, 3, (0, 255, 0), 4)
 
     cv2.imshow("Image", img)
     if cv2.waitKey(1) == ord('q'):
